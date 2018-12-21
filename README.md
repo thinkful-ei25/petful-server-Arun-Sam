@@ -1,45 +1,22 @@
-# Thinkful Backend Template
+# Petful (Arun and Sam)
 
-A template for developing and deploying Node.js apps.
+## About Petful
 
-## Getting started
+Petful is a web application for adopting pets online. Users may either choose to adopt a cat or dog; no other pets are hosted on the platform. All adoptions are done on a first-in, first-out basis, meaning that the pets kept on the platform for the longest period of time must be adopted first. Dogs and cats are kept in separate queues stored on our server. Users have a choice of either adopting a cat or dog, but have no choice in which dog or cat they wish to adopt.
 
-### Setting up a project
+## Our API
 
-* Move into your projects directory: `cd ~/YOUR_PROJECTS_DIRECTORY`
-* Clone this repository: `git clone https://github.com/Thinkful-Ed/backend-template YOUR_PROJECT_NAME`
-* Move into the project directory: `cd YOUR_PROJECT_NAME`
-* Install the dependencies: `npm install`
-* Create a new repo on GitHub: https://github.com/new
-    * Make sure the "Initialize this repository with a README" option is left unchecked
-* Update the remote to point to your GitHub repository: `git remote set-url origin https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME`
+There are two routes for our API, '/api/dog' and '/api/cat', and two functionalities, GET and DELETE. GET retrieves the first pet in the queue for either dogs or cats. GET occurs whenever the client is refreshed or whenever a pet is adopted and the client needs to retrieve the next pet in the queue. GET operates by using peek() on the queue, so it does not alter it's state at all. DELETE works by dequeueing the very first pet in the queue for either dogs or cats. Pressing the adopt button sets off the DELETE method for the queue.
 
-### Working on the project
+## Tech Stack
 
-* Move into the project directory: `cd ~/YOUR_PROJECTS_DIRECTORY/YOUR_PROJECT_NAME`
-* Run the development task: `npm start`
-    * Starts a server running at http://localhost:8080
-    * Automatically restarts when any of your files change
+### Front-End
 
-## Databases
+- React
+- Redux
+- Redux Thunk
 
-By default, the template is configured to connect to a MongoDB database using Mongoose.  It can be changed to connect to a PostgreSQL database using Knex by replacing any imports of `db-mongoose.js` with imports of `db-knex.js`, and uncommenting the Postgres `DATABASE_URL` lines in `config.js`.
+### Back-End
 
-## Deployment
-
-Requires the [Heroku CLI client](https://devcenter.heroku.com/articles/heroku-command-line).
-
-### Setting up the project on Heroku
-
-* Move into the project directory: `cd ~/YOUR_PROJECTS_DIRECTORY/YOUR_PROJECT_NAME`
-* Create the Heroku app: `heroku create PROJECT_NAME`
-
-* If your backend connects to a database, you need to configure the database URL:
-    * For a MongoDB database: `heroku config:set DATABASE_URL=mongodb://USERNAME:PASSWORD@HOST:PORT/DATABASE_NAME`
-    * For a PostgreSQL database: `heroku config:set DATABASE_URL=postgresql://USERNAME:PASSWORD@HOST:PORT/DATABASE_NAME`
-
-* If you are creating a full-stack app, you need to configure the client origin: `heroku config:set CLIENT_ORIGIN=https://www.YOUR_DEPLOYED_CLIENT.com`
-
-### Deploying to Heroku
-
-* Push your code to Heroku: `git push heroku master`
+- Node
+- Express
